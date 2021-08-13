@@ -15,13 +15,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Class3 {
     static WebDriver driver;
     static String url = "http://websites.milonic.com/newtours.demoaut.com";
     static String drop="https://www.dafabet.com/in/join?regvia";
     static String base="http://demo.guru99.com/test/newtours/register.php";
+    static String base1="http://demo.guru99.com/test/newtours/index.php";
     static String select="https://demoqa.com/alerts";
     static String base7="http://demo.guru99.com/test/delete_customer.php";
 	
@@ -31,6 +34,7 @@ public class Class3 {
 //    Class3.tables();
     	
     	Class3 obj=new Class3();
+    	obj.textCase2();
     	
 	}
     
@@ -42,7 +46,7 @@ public class Class3 {
 //	    driver.get ("http://swisnl.github.io/jQuery-contextMenu/demo.html");
 	    setBrowser("Chrome");
 	    driver.manage().window().maximize();
-	    driver.get(base);
+	    driver.get(base1);
 	    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	}
 
@@ -189,11 +193,93 @@ Actions act = new Actions(driver);
 
 
 
+
+public  void textCase1() {
+	openBrowser(drop);
+	driver.findElement(By.xpath("//*[@id='LoginForm_username']")).sendKeys("jana1315");
+	driver.findElement(By.xpath("//*[@name='LoginForm[password]']")).sendKeys("madhu9397");
+	driver.findElement(By.xpath("//*[@name='LoginForm[submit]']")).click();
+	WebDriverWait wait= new WebDriverWait(driver,20);
+	WebElement guru99seleniumlink;
+	guru99seleniumlink= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1")));
+	if(driver.findElement(By.xpath("//h1")).getText().equalsIgnoreCase("Login Successfully"))
+	{
+		System.out.println("PASS");
+	}
+	else {
+		System.out.println("FAIL");
+	}
+		
+	
 }
 
 
+public void textCase2() {
+	openBrowser(base1);
+
+	driver.findElement(By.xpath("//*[@name='userName']")).sendKeys("admin");
+	driver.findElement(By.xpath("//*[@name='password']")).sendKeys("admin");
+	driver.findElement(By.xpath("//*[@name='submit']")).click();
+	WebDriverWait wait = new WebDriverWait(driver,20);
+	WebElement guru99seleniumlink;
+	guru99seleniumlink= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3")));
+	if(driver.findElement(By.xpath("//h3")).getText().equalsIgnoreCase("Login Successfully"))
+	{
+
+	
+		System.out.println("PASS");
+	}
+	else {
+		System.out.println("FAIL");
+	}
+	
+}
+	
+	public void textCase3() {
+		openBrowser(base1);
+
+		driver.findElement(By.xpath("//*[@name='userName']")).sendKeys("a23456789");
+		driver.findElement(By.xpath("//*[@name='password']")).sendKeys("admin");
+		driver.findElement(By.xpath("//*[@name='submit']")).click();
+		WebDriverWait wait = new WebDriverWait(driver,20);
+		WebElement guru99seleniumlink;
+		
+		if(driver.getTitle().equalsIgnoreCase("Login Successfully"))
+		{
+
+		
+			System.out.println("PASS");
+		}
+		else {
+			System.out.println("FAIL");
+		}
+	
+	}
+
+		
+		public void textCase4() {
+			openBrowser(base1);
+
+			driver.findElement(By.xpath("//*[@name='userName']")).sendKeys("admin");
+			driver.findElement(By.xpath("//*[@name='password']")).sendKeys("JANA@.a876543");
+			driver.findElement(By.xpath("//*[@name='submit']")).click();
+			WebDriverWait wait = new WebDriverWait(driver,20);
+			WebElement guru99seleniumlink;
+			
+			if(driver.getTitle().equalsIgnoreCase("Login Successfully"))
+			{
+
+			
+				System.out.println("PASS");
+			}
+			else {
+				System.out.println("FAIL");
+			}
+		
+
+}
 
 
-
+}
 
 
